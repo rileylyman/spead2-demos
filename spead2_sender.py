@@ -42,8 +42,16 @@ item.value = 0xDEADBEEF
 item = itemGroup.add_item(0x1001, "matrix", "a matrix of integers", (4,4), dtype=np.int32)
 item.value = np.zeros((4,4), np.int32)
 
+#takes a string and returns a list where each char is cast to its ASCII representation
+def stringify(s):
+	buff = []
+	for char in s:
+		buff.append(ord(char))
+	return buff
+
+
 item = itemGroup.add_item(0x1002, "string", "a string", (14,), dtype=np.uint8)
-item.value = [ord('a'), ord(' '), ord('m'), ord('i'), ord('g'), ord('h'), ord('t'), ord('y'), ord(' '), ord('s'), ord('t'), ord('i'), ord('n'), ord('g')]
+item.value = stringify("this is a string")
 
 #We now associate this ItemGroup with a HeapGenerator, in order to send
 #it through the stream
