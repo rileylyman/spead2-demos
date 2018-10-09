@@ -18,7 +18,7 @@ streamConfig = spead2.send.StreamConfig(rate=1e7)
 #A Udp stream sends heap packets over udp, parameters are
 #threadPool, ipAddress, port, streamConfig
 
-stream = spead2.send.UdpStream(threadPool, "127.0.0.1", 8888, streamConfig)
+stream = spead2.send.UdpStream(threadPool, "10.0.1.112", 8888, streamConfig)
 
 #Documentation says to delete thread_pools after they are assigned...
 #really not sure why, will have to look into it
@@ -50,7 +50,7 @@ def stringify(s):
 	return buff
 
 
-item = itemGroup.add_item(0x1002, "string", "a string", (14,), dtype=np.uint8)
+item = itemGroup.add_item(0x1002, "string", "a string", (16,), dtype=np.uint8)
 item.value = stringify("this is a string")
 
 #We now associate this ItemGroup with a HeapGenerator, in order to send
